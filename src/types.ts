@@ -31,7 +31,7 @@ import DailySentiment, {
 } from "./types/Sentiment";
 import ShortInterest from "./types/ShortInterest";
 import Splits from "./types/Splits";
-import Stats, { HistoricalStats, StatType } from "./types/Stats";
+import Stats, { HistoricalStats, StatType, AdvancedStats } from "./types/Stats";
 import Trades, { LargestTrades } from "./types/Trades";
 import TimeSeries from "./types/TimeSeries";
 import RecommendationTrends from "./types/RecommendationTrends";
@@ -106,6 +106,7 @@ export {
   Splits,
   SentimentType,
   Stats,
+  AdvancedStats,
   StatType,
   Trades,
   TimeSeries,

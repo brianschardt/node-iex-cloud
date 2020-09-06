@@ -28,20 +28,20 @@ class Stock {
   ): Promise<iex.BalanceSheet> => {
     return this.req.request(
       `balance-sheet${period ? `?period=${period}` : ""}${
-        last ? `&last=${last}` : ""
+      last ? `&last=${last}` : ""
       }`
     );
   };
 
-  
+
 
   /** batch returns multipe data-types for a give stock symbol */
   // public batch = (...params: any): Promise<any> => {
   //   return this.req.response(this.req.batchParams, params);
   // };
 
-   /** batch returns multipe data-types for a give stock symbol */
-   public batch = ():Batch => {
+  /** batch returns multipe data-types for a give stock symbol */
+  public batch = (): Batch => {
     return this.iexBatch;
   };
 
@@ -90,13 +90,13 @@ class Stock {
       const paramsString: string =
         keys.length > 1
           ? `?${keys.reduce((str: string, key: string, i: number): string => {
-              if (key !== "date") {
-                return `${str}${key}=${params[key]}${
-                  i < keys.length - 1 ? "&" : ""
+            if (key !== "date") {
+              return `${str}${key}=${params[key]}${
+                i < keys.length - 1 ? "&" : ""
                 }`;
-              }
-              return str;
-            }, "")}`
+            }
+            return str;
+          }, "")}`
           : "";
       return this.req.request(`chart/${range}/${params.date}${paramsString}`);
     }
@@ -105,9 +105,9 @@ class Stock {
     const values = params && Object.entries(params);
     return this.req.request(
       `chart/${range}${
-        params
-          ? "?" + values.map((v: string[]) => `${v[0]}=${v[1]}`).join("&")
-          : ""
+      params
+        ? "?" + values.map((v: string[]) => `${v[0]}=${v[1]}`).join("&")
+        : ""
       }`
     );
   };
@@ -236,7 +236,7 @@ class Stock {
   ): Promise<string[] | any> => {
     return this.req.request(
       `options${expiration ? "/" + expiration : ""}${
-        optionSide ? "/" + optionSide : ""
+      optionSide ? "/" + optionSide : ""
       }`
     );
   };
@@ -286,6 +286,10 @@ This endpoint provides social sentiment data from StockTwits. Data can be viewed
 
   public stats = (stat = ""): Promise<iex.Stats> => {
     return this.req.request(`stats/${stat}`);
+  };
+
+  public advancedStats = (): Promise<iex.AdvancedStats> => {
+    return this.req.request(`advanced-stats`);
   };
 
   public upcomingEvents = (): Promise<any> => {

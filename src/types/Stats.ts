@@ -1,49 +1,74 @@
 export default interface Stats {
-    /** Company name of the security  */
-    companyName: string;
-    /** Market cap of the security calculated as shares outstanding * previous day close.  */
-    marketcap: number;
-    week52high: number;
-    week52low: number;
-    /** Percentage change  */
-    week52change: number;
-    /** Number of shares outstanding as the difference between issued shares and treasury shares. Investopedia */
-    sharesOutstanding: number;
-    /** Returns the annual shares outstanding minus closely held shares. */
-    float: number;
-    /** Average 10 day volume  */
-    avg10Volume: number;
-    /**  Average 30 day volume */
-    avg30Volume: number;
-    day200MovingAvg: number;
-    day50MovingAvg: number;
-    employees: number;
-    /** Trailing twelve month earnings per share. Investopedia */
-    ttmEPS: number;
-    /** Trailing twelve month dividend rate per share */
-    ttmDividendRate: number;
-    /** The ratio of trailing twelve month dividend compared to the previous day close price. The dividend yield is represented as a percentage calculated as (ttmDividendRate) / (previous day close price) Investopedia */
-    dividendYield: number;
-    /** Expected ex date of the next dividend */
-    nextDividendDate: Date;
-    /**  	Ex date of the last dividend */
-    exDividendDate: Date;
-    /** Expected next earnings report date */
-    nextEarningsDate: Date;
-    peRatio: number;
-    /** Beta is a measure used in fundamental analysis to determine the volatility of an asset or portfolio in relation to the overall market. Levered beta calculated with 1 year historical data and compared to SPY. */
-    beta: number;
-    maxChangePercent: number;
-    year5ChangePercent: number;
-    year2ChangePercent: number;
-    year1ChangePercent: number;
-    ytdChangePercent: number;
-    month6ChangePercent: number;
-    month3ChangePercent: number;
-    month1ChangePercent: number;
-    day30ChangePercent: number;
-    day5ChangePercent: number;
-  }
+  /** Company name of the security  */
+  companyName: string;
+  /** Market cap of the security calculated as shares outstanding * previous day close.  */
+  marketcap: number;
+  week52high: number;
+  week52low: number;
+  /** Percentage change  */
+  week52change: number;
+  /** Number of shares outstanding as the difference between issued shares and treasury shares. Investopedia */
+  sharesOutstanding: number;
+  /** Returns the annual shares outstanding minus closely held shares. */
+  float: number;
+  /** Average 10 day volume  */
+  avg10Volume: number;
+  /**  Average 30 day volume */
+  avg30Volume: number;
+  day200MovingAvg: number;
+  day50MovingAvg: number;
+  employees: number;
+  /** Trailing twelve month earnings per share. Investopedia */
+  ttmEPS: number;
+  /** Trailing twelve month dividend rate per share */
+  ttmDividendRate: number;
+  /** The ratio of trailing twelve month dividend compared to the previous day close price. The dividend yield is represented as a percentage calculated as (ttmDividendRate) / (previous day close price) Investopedia */
+  dividendYield: number;
+  /** Expected ex date of the next dividend */
+  nextDividendDate: Date;
+  /**  	Ex date of the last dividend */
+  exDividendDate: Date;
+  /** Expected next earnings report date */
+  nextEarningsDate: Date;
+  peRatio: number;
+  /** Beta is a measure used in fundamental analysis to determine the volatility of an asset or portfolio in relation to the overall market. Levered beta calculated with 1 year historical data and compared to SPY. */
+  beta: number;
+  maxChangePercent: number;
+  year5ChangePercent: number;
+  year2ChangePercent: number;
+  year1ChangePercent: number;
+  ytdChangePercent: number;
+  month6ChangePercent: number;
+  month3ChangePercent: number;
+  month1ChangePercent: number;
+  day30ChangePercent: number;
+  day5ChangePercent: number;
+}
+
+export interface AdvancedStats {
+  beta: number
+  totalCash: number
+  currentDebt: number
+  revenue: number
+  grossProfit: number
+  totalRevenue: number
+  EBITDA: number
+  revenuePerShare: number
+  revenuePerEmployee: number
+  debtToEquity: number
+  profitMargin: number
+  enterpriseValue: number
+  enterpriseValueToRevenue: number
+  priceToSales: number
+  priceToBook: number
+  forwardPERatio: number
+  pegRatio: number
+  peHigh: number
+  peLow: number
+  week52highDate: Date,
+  week52lowDate: Date,
+  putCallRatio: number,
+}
 
 export interface HistoricalStats {
   averageDailyVolume: number;
