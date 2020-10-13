@@ -47,6 +47,8 @@ export interface ChartParams {
   chartInterval?: number;
   /** boolean. If true, changeOverTime and marketChangeOverTime will be relative to previous day close instead of the first value. */
   changeFromClose?: boolean;
+  /** boolean., current trading day data is appended **/
+  includeToday?: boolean;
   /** If passed, chart data will return the last N elements from the time period defined by the range parameter */
   chartLast?: number;
   /** 

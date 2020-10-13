@@ -17,7 +17,7 @@ import {
   InsiderTransactions,
 } from "./types/Insider";
 import InstitutionalOwnership from "./types/InstitutionalOwnership";
-import IntraDay, { IntradayPrices } from "./types/IntraDay";
+import IntraDay, { IntradayPrices, IntradayPricesParams } from "./types/IntraDay";
 import News from "./types/News";
 import OHLC from "./types/OHLC";
 import PriceTarget from "./types/PriceTarget";
@@ -90,6 +90,7 @@ export {
   InstitutionalOwnership,
   IntraDay,
   IntradayPrices,
+  IntradayPricesParams,
   LargestTrades,
   Logo,
   MinuteSentiment,

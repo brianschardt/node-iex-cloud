@@ -27,8 +27,7 @@ class Stock {
     last?: iex.Last
   ): Promise<iex.BalanceSheet> => {
     return this.req.request(
-      `balance-sheet${period ? `?period=${period}` : ""}${
-      last ? `&last=${last}` : ""
+      `balance-sheet${period ? `?period=${period}` : ""}${last ? `&last=${last}` : ""
       }`
     );
   };
@@ -91,8 +90,7 @@ class Stock {
         keys.length > 1
           ? `?${keys.reduce((str: string, key: string, i: number): string => {
             if (key !== "date") {
-              return `${str}${key}=${params[key]}${
-                i < keys.length - 1 ? "&" : ""
+              return `${str}${key}=${params[key]}${i < keys.length - 1 ? "&" : ""
                 }`;
             }
             return str;
@@ -104,8 +102,7 @@ class Stock {
     // in any other case
     const values = params && Object.entries(params);
     return this.req.request(
-      `chart/${range}${
-      params
+      `chart/${range}${params
         ? "?" + values.map((v: string[]) => `${v[0]}=${v[1]}`).join("&")
         : ""
       }`
@@ -215,7 +212,22 @@ class Stock {
   };
 
   /** This endpoint will return aggregated intraday prices in one minute buckets */
-  public intradayPrices = (): Promise<iex.IntradayPrices[]> => {
+  public intradayPrices = (params: iex.IntradayPricesParams): Promise<iex.IntradayPrices[]> => {
+    // if range is 'date' & there's a 'date' param
+    if (params) {
+      const keys: string[] = Object.keys(params);
+      const paramsString: string =
+        keys.length > 1
+          ? `?${keys.reduce((str: string, key: string, i: number): string => {
+            if (key !== "date") {
+              return `${str}${key}=${params[key]}${i < keys.length - 1 ? "&" : ""
+                }`;
+            }
+            return str;
+          }, "")}`
+          : "";
+      return this.req.request(`intraday-prices/${paramsString}`);
+    }
     return this.req.request("intraday-prices");
   };
 
@@ -235,8 +247,7 @@ class Stock {
     optionSide?: iex.OptionSide
   ): Promise<string[] | any> => {
     return this.req.request(
-      `options${expiration ? "/" + expiration : ""}${
-      optionSide ? "/" + optionSide : ""
+      `options${expiration ? "/" + expiration : ""}${optionSide ? "/" + optionSide : ""
       }`
     );
   };
